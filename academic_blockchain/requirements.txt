@@ -1,0 +1,4 @@
+Flask==2.3.3
+requests==2.31.0
+numpy==1.26.4
+hashlib==2024.6.0

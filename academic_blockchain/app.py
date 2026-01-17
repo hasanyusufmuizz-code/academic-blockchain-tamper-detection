@@ -177,7 +177,7 @@ def verify_chain():
     
     result = {
         "valid": valid,
-        "message": "✅ Blockchain VALID - Tidak ada manipulasi" if valid else "❌ Blockchain TIDAK VALID - Terdeteksi manipulasi!",
+        "message": "Blockchain VALID - Tidak ada manipulasi" if valid else "Blockchain TIDAK VALID - Terdeteksi manipulasi!",
         "total_blocks": len(blockchain.chain)
     }
 
@@ -211,7 +211,7 @@ def detect_cloud_tampering():
                         details.append({
                             "block_id": block["block_id"],
                             "student_id": block["student_id"],
-                            "status": "⚠️ DATA TAMPERED",
+                            "status": "DATA TAMPERED",
                             "blockchain_nilai": block["nilai"],
                             "cloud_nilai": row["nilai"],
                             "blockchain_hash": block["current_hash"],
@@ -221,7 +221,7 @@ def detect_cloud_tampering():
                         details.append({
                             "block_id": block["block_id"],
                             "student_id": block["student_id"],
-                            "status": "✅ VALID"
+                            "status": "VALID"
                         })
                     break
 
@@ -229,12 +229,12 @@ def detect_cloud_tampering():
                 tampered = True
                 details.append({
                     "block_id": block["block_id"],
-                    "status": "❌ MISSING FROM CLOUD"
+                    "status": "MISSING FROM CLOUD"
                 })
 
         return jsonify({
             "tampered": tampered,
-            "message": "❌ Manipulasi data terdeteksi di Google Sheets!" if tampered else "✅ Data cloud aman dan sesuai blockchain",
+            "message": " Manipulasi data terdeteksi di Google Sheets!" if tampered else "Data cloud aman dan sesuai blockchain",
             "total_blocks_checked": len(blockchain.chain) - 1,
             "details": details
         })
@@ -247,4 +247,5 @@ def detect_cloud_tampering():
 
 
 if __name__ == "__main__":
+
     app.run(debug=True)
